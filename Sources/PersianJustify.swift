@@ -65,9 +65,10 @@ extension String {
         with font: Font
     ) -> NSAttributedString {
         let final = NSMutableAttributedString(string: "")
+        let (index, words) = linesProcessing(lines: lines)
 
-        lines.enumerated().forEach { index, line in
-            let words = line.getWords()
+//        lines.enumerated().forEach { index, line in
+//            let words = line.getWords()
 
             var currentLineWords: [Word] = []
 
@@ -120,7 +121,7 @@ extension String {
             if index < lines.count-1 {
                 final.append(LineBreakCharacter.attributedStringRepresentation)
             }
-        }
+//        }
 
         return final
     }
