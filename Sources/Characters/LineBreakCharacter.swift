@@ -2,10 +2,12 @@ import Foundation
 
 /// Wrapper around a character which is used to break a line.
 struct LineBreakCharacter {
-    fileprivate static let _character: Character = "\n"
+//    fileprivate static let _character: Character = "\n"
+    fileprivate static let _character: CharacterSet = CharacterSet.newlines
 
     static var stringRepresentation: String {
-        String(LineBreakCharacter._character)
+        return String(describing: _character)
+        //        String(LineBreakCharacter._character)
     }
 
     static var attributedStringRepresentation: NSAttributedString {
@@ -26,7 +28,8 @@ extension String {
         replacingOccurrences(of: target, with: LineBreakCharacter.stringRepresentation)
     }
 
-    func splitWithLineSeparator() -> [Substring] {
-        split(separator: LineBreakCharacter._character)
+    func splitWithLineSeparator() -> [String] {
+//        split(separator: LineBreakCharacter._character)
+        return components(separatedBy: LineBreakCharacter._character)
     }
 }
