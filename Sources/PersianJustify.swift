@@ -49,6 +49,16 @@ extension String {
         )
     }
 
+    private func linesProcessing(lines: [Line]) -> (index: Int, line: [Word]) {
+        var line = [Word]()
+        var index = 0
+        lines.enumerated().lazy.forEach {
+            line = $1.getWords()
+            index = $0
+        }
+        return (index, line)
+    }
+    
     private func justify(
         _ lines: [Line],
         in proposedWidth: CGFloat,
